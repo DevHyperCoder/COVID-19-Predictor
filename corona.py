@@ -9,10 +9,14 @@ from waitress import serve
 
 app = Flask(__name__)
 
-if __name__ == "corona":
-    serve(app,listen = "*:8080")
 
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+# if __name__ == "corona":
+#     serve(app,listen = "*:8080")
 
 df = pd.read_csv("covid.csv", names=['age',
                                      'chronic',
@@ -71,9 +75,7 @@ print(forest.predict(np.array([34, 0, 1, 0, 0, 0]).reshape(1, -1)))
 # print(forest.predict(np.array[34,0,0,0,0,0].reshape(1,-1)))
 
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+
 
 @app.route("/predict" ,methods = ['GET','POST'])
 def index():
