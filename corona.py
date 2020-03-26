@@ -7,6 +7,11 @@ from flask import render_template, Flask, redirect, request
 
 from waitress import serve
 
+if __name__ == "corona":
+    serve(app,listen = "*:8080")
+
+
+
 df = pd.read_csv("covid.csv", names=['age',
                                      'chronic',
                                      'travelled',
