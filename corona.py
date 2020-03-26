@@ -7,6 +7,8 @@ from flask import render_template, Flask, redirect, request
 
 from waitress import serve
 
+app = Flask(__name__)
+
 if __name__ == "corona":
     serve(app,listen = "*:8080")
 
@@ -68,7 +70,6 @@ print(forest.predict(np.array([34, 0, 1, 0, 0, 0]).reshape(1, -1)))
 
 # print(forest.predict(np.array[34,0,0,0,0,0].reshape(1,-1)))
 
-app = Flask(__name__)
 
 @app.route("/")
 def home():
