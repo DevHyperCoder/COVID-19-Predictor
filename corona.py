@@ -56,7 +56,8 @@ best = 0
 #         with open("student.pickle", "wb") as f:
 #             pickle.dump(forest, f)
 
-forest = pickle.load(open("student.pickle","rb"))
+# forest = pickle.load(open("student.pickle","rb"))
+forest.fit(x_train,y_train)
 print(forest.score(x_test,y_test))
 print(forest.predict(np.array([34, 0, 1, 0, 0, 0]).reshape(1, -1)))
 
