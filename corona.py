@@ -15,8 +15,8 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-# if __name__ == "corona":
-#     serve(app,listen = "*:8080")
+if __name__ == "corona":
+    serve(app,listen = "*:8080")
 
 df = pd.read_csv("covid.csv", names=['age',
                                      'chronic',
@@ -95,5 +95,5 @@ def index():
 
     return render_template("display.html",predict=predict)
 
-if __name__ == "corona":
-    serve(app,listen = "*:8080")
+# if __name__ == "corona":
+#     serve(app,listen = "*:8080")
