@@ -42,15 +42,35 @@
         <form action="/predict" method="post"><label for="age">What's your Age</label>
             <input type="text" name="age"><br/>
             <label for="chronic">Do you have Chronic disease</label>
-            <input type="text" name="chronic"><br/>
+            <select id="chronic" name="chronic">
+                <option name="Yes">YES</option>
+                <option name="No">NO</option>
+            </select><br/>
+
+
+
+
             <label for="travelled">Travelled in the past 30 days?</label>
-            <input type="text" name="travelled"><br/>
+            <select name="travelled">
+                <option name="Yes">YES</option>
+                <option name="No">NO</option>
+            </select>
+            <BR/>
             <label for="runny">Do you have a runny nose</label>
-            <input type="text" name="runny"><br/>
+            <select name="runny">
+                <option name="Yes">YES</option>
+                <option name="No">NO</option>
+            </select>
             <label for="fever">Do you have fever</label>
-            <input type="text" name="fever"><br/>
+            <select name="fever">
+                <option name="Yes">YES</option>
+                <option name="No">NO</option>
+            </select><br/>
             <label for="diff_breath">Do you have difficulty breathing</label>
-            <input type="text" name="diff_breath"><br/>
+            <select name="diff_breath">
+                <option name="Yes">YES</option>
+                <option name="No">NO</option>
+            </select><br/>
             <input type="submit">
         </form>
     </div>
