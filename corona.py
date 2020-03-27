@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 import numpy as np
 import sklearn
 import pickle
@@ -41,7 +41,7 @@ print(y.shape)
 
 from sklearn.ensemble import RandomForestRegressor
 
-forest = RandomForestRegressor(n_estimators=1000)
+forest = LogisticRegression()
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.25)
 
 forest.fit(x_train, y_train)
@@ -113,17 +113,27 @@ def index():
     else:
         diff_breath = 0
 
-    predict = forest.predict(np.array([age, chronic, travelled, runny, fever, diff_breath]).reshape(1, -1))
+    # age = (int(age)/100)
+    age = int(age)
 
-    if (chronic == 1 and travelled == 1 and runny == 1 and fever == 1 and diff_breath == 1 and age > "79"):
-        if predict is not 1:
-            predict = 0.98
+    predict = forest.predict_proba([[age,chronic,travelled,runny,fever,diff_breath]])
 
-    if chronic == 0 and travelled == 0 and runny == 0 and diff_breath == 0 and age > '0' and age < "17":
-        if predict is not 0:
-            predict = 0.1
-
+    # if (chronic == 1 and travelled == 1 and runny == 1 and fever == 1 and diff_breath == 1 and age > "79"):
+    #     if predict is not 1:
+    #         predict = 0.98
+    #
+    # if chronic == 0 and travelled == 0 and runny == 0 and diff_breath == 0 and age > '0' and age < "17":
+    #     if predict is not 0:
+    #         predict = 0.1
+    print(predict)
+    predict = predict[0][1]
     predict=int( predict*100)
+    print(predict)
+
+    if predict is 0:
+        predict =5
+
+
     return render_template("display.html", predict=predict)
 
 #     return render_template("display.html",predict=predict)
