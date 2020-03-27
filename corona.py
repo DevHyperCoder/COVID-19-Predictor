@@ -39,9 +39,9 @@ print(y.shape)
 # x=np.array(x).reshape(1,-1)
 # y=np.array(y).reshape(1,-1)
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 
-forest = RandomForestClassifier(n_estimators=1000)
+forest = RandomForestRegressor(n_estimators=1000)
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.25)
 
 forest.fit(x_train, y_train)
