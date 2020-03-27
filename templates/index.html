@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>COVID-19 PREDICTOR</title>
+    <style>
+        .container {
+            display: flex;
+            margin: auto;
+            max-width: 1000px;
+            flex-direction: column;
+        }
+        
+        .container h1 {
+            font-size: 3rem;
+        }
+        
+        .container h2 {
+            font-size: 2.5rem;
+        }
+        
+        .container form {
+            flex: 1;
+        }
+        
+        .container form {
+            margin-top: 100px;
+        }
+        
+        .container form input,
+        label {
+            font-size: 2rem;
+        }
+    </style>
 </head>
-<body>
-<form action="/predict" method="post">
-    <input type = "text" name = "age">
-    <input type = "text" name = "chronic">
-    <input type = "text" name = "travelled">
-    <input type = "text" name = "runny">
-    <input type = "text" name = "fever">
-    <input type = "text" name = "diff_breath">
-<input type="submit">
 
-</form>
+<body>
+    <div class="container">
+        <h1>Hi, </h1>
+        <h2>Welcome to the COVID-19 PREDICTOR</h2>
+        <form action="/predict" method="post"><label for="age">What's your Age</label>
+            <input type="text" name="age"><br/>
+            <label for="chronic">Do you have Chronic disease</label>
+            <input type="text" name="chronic"><br/>
+            <label for="travelled">Travelled in the past 30 days?</label>
+            <input type="text" name="travelled"><br/>
+            <label for="runny">Do you have a runny nose</label>
+            <input type="text" name="runny"><br/>
+            <label for="fever">Do you have fever</label>
+            <input type="text" name="fever"><br/>
+            <label for="diff_breath">Do you have difficulty breathing</label>
+            <input type="text" name="diff_breath"><br/>
+            <input type="submit">
+        </form>
+    </div>
 </body>
+
 </html>
