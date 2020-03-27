@@ -19,7 +19,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     serve(app,listen = "*:"+port)
 
-df = pd.read_csv("covid.csv", names=['age',
+df = pd.read_csv("covid-19.csv", names=['age',
                                      'chronic',
                                      'travelled',
                                      'runny',
