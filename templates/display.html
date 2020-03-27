@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-{{predict}}
+    {% if predict %}
+    <p>The machine has predicted that you have a {{ predict }}% chance of getting COVID-19.</p>
+    {% endif %}
 </body>
+
 </html>
