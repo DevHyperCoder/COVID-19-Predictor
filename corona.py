@@ -4,7 +4,7 @@ import numpy as np
 import sklearn
 import pickle
 from flask import render_template, Flask, redirect, request
-
+import os
 from waitress import serve
 
 app = Flask(__name__)
@@ -15,8 +15,9 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-if __name__ == "corona":
-    serve(app,listen = "*:8080")
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    serve(app,listen = "*:"+port)
 
 df = pd.read_csv("covid.csv", names=['age',
                                      'chronic',
