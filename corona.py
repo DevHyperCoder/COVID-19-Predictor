@@ -40,7 +40,7 @@ print(y.shape)
 
 from sklearn.ensemble import RandomForestClassifier
 
-forest = RandomForestClassifier(n_estimators=3000)
+forest = RandomForestClassifier(n_estimators=1000)
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.25)
 
 forest.fit(x_train, y_train)
