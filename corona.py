@@ -88,13 +88,43 @@ def index():
     fever = request.form["fever"]
     diff_breath = request.form["diff_breath"]
 
+    if chronic == "YES":
+        chronic = 1
+    else:
+        chronic =0
+
+    if travelled == "YES":
+        travelled = 1
+    else:
+        travelled =0
+
+    if runny == "YES":
+        runny = 1
+    else:
+        runny =0
+
+    if fever == "YES":
+        fever = 1
+    else:
+        fever =0
+
+    if diff_breath == "YES":
+        diff_breath = 1
+    else:
+        diff_breath =0
+
+
+
+
     predict=forest.predict(np.array([age,chronic,travelled,runny,fever,diff_breath]).reshape(1,-1))
 
-    if(chronic is 1 and travelled is 1 and runny is 1 and fever is 1 and diff_breath is 1 and age > 79):
+    if(chronic == 1 and travelled == 1 and runny == 1 and fever == 1 and diff_breath == 1 and age > "79"):
         if predict is not 1:
             predict = 1
 
     return render_template("display.html",predict=predict)
+
+#     return render_template("display.html",predict=predict)
 
 # if __name__ == "corona":
 #     serve(app,listen = "*:8080")
