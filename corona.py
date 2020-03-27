@@ -91,38 +91,40 @@ def index():
     if chronic == "YES":
         chronic = 1
     else:
-        chronic =0
+        chronic = 0
 
     if travelled == "YES":
         travelled = 1
     else:
-        travelled =0
+        travelled = 0
 
     if runny == "YES":
         runny = 1
     else:
-        runny =0
+        runny = 0
 
     if fever == "YES":
         fever = 1
     else:
-        fever =0
+        fever = 0
 
     if diff_breath == "YES":
         diff_breath = 1
     else:
-        diff_breath =0
+        diff_breath = 0
 
+    predict = forest.predict(np.array([age, chronic, travelled, runny, fever, diff_breath]).reshape(1, -1))
 
-
-
-    predict=forest.predict(np.array([age,chronic,travelled,runny,fever,diff_breath]).reshape(1,-1))
-
-    if(chronic == 1 and travelled == 1 and runny == 1 and fever == 1 and diff_breath == 1 and age > "79"):
+    if (chronic == 1 and travelled == 1 and runny == 1 and fever == 1 and diff_breath == 1 and age > "79"):
         if predict is not 1:
-            predict = 1
+            predict = 0.98
 
-    return render_template("display.html",predict=predict)
+    if chronic == 0 and travelled == 0 and runny == 0 and diff_breath == 0 and age > '0' and age < "17":
+        if predict is not 0:
+            predict = 0.1
+
+    predict=int( predict*100)
+    return render_template("display.html", predict=predict)
 
 #     return render_template("display.html",predict=predict)
 
